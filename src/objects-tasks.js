@@ -150,8 +150,12 @@ function makeWord(lettersObject) {
  *    sellTickets([25, 25, 50]) => true
  *    sellTickets([25, 100]) => false (The seller does not have enough money to give change.)
  */
-function sellTickets(/* queue */) {
-  throw new Error('Not implemented');
+function sellTickets(queue) {
+  const change = queue.reduce(
+    (acc, bill) => (bill > 25 ? acc - bill : acc + bill),
+    0
+  );
+  return change >= 0;
 }
 
 /**
@@ -230,8 +234,12 @@ function fromJSON(proto, json) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) =>
+    a.country.localeCompare(b.country)
+      ? a.country.localeCompare(b.country)
+      : a.city.localeCompare(b.city)
+  );
 }
 
 /**
